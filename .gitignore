@@ -20,3 +20,6 @@ target/
 *.zip
 *.tar.gz
 *.rar
+
+### private ###
+secure.properties

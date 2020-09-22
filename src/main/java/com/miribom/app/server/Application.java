@@ -11,7 +11,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication(scanBasePackages = {"com.miribom.app.server"})
 public class Application {
-
 	/**
 	 * @param args
 	 */
