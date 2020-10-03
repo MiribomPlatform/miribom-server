@@ -43,6 +43,7 @@ public class UserBo {
 		User user = new User(userId, userName, mobile, email, LocalDateTime.now(), LocalDateTime.now());
 		// 사용자 추가
 		userDao.insert(user);
+		logger.info("user:create - user:{}", user);
 
 		return user;
 	}
