@@ -1,8 +1,5 @@
 /*
  * @(#)WebMvcConfig.java 2020. 09. 30
- *
- * Copyright 2020 WorksMobile Corp. All rights Reserved.
- * Works Mobile PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
 package com.miribom.app.server.config;
 

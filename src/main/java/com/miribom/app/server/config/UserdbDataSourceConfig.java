@@ -26,7 +26,7 @@ public class UserdbDataSourceConfig {
 	private ApplicationContext applicationContext;
 
 	@Bean
-	public SqlSessionTemplate testdbSqlSessionTemplate(@Qualifier("userdbSqlSessionFactory") SqlSessionFactoryBean sqlSessionFactoryBean) throws Exception {
+	public SqlSessionTemplate userdbSqlSessionTemplate(@Qualifier("userdbSqlSessionFactory") SqlSessionFactoryBean sqlSessionFactoryBean) throws Exception {
 		return new SqlSessionTemplate(sqlSessionFactoryBean.getObject());
 	}
 
