@@ -20,6 +20,9 @@ import com.miribom.app.common.exception.ErrorCd;
 import com.miribom.app.server.test.bo.TestUserBo;
 import com.miribom.app.server.test.controller.model.TestUserCreateRequest;
 import com.miribom.app.server.test.model.TestUser;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 
 /**
  * Test Controller
@@ -58,6 +61,18 @@ public class TestController {
 		throw ErrorCd.INTERNAL_SERVER_ERROR.serviceException(String.format("exception test:%s", new Exception("hello")));
 	}
 
+	/**
+	 * 테스트 유저 생성 예시 API
+	 * @param req
+	 * @return
+	 */
+	@ApiOperation(value = "테스트 유저 생성")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name = "userId", value = "유저 ID", required = true),
+		@ApiImplicitParam(name = "userName", value = "이름", required = true),
+		@ApiImplicitParam(name = "mobile", value = "전화번호", required = true),
+		@ApiImplicitParam(name = "email", value = "이메일(형식 유지)", required = true)
+	})
 	@PostMapping("/user/new")
 	@ResponseStatus(HttpStatus.CREATED)
 	public TestUser create(@RequestBody @Valid TestUserCreateRequest req) {
