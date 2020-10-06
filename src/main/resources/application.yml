@@ -7,6 +7,15 @@ server:
 
 # datasource
 datasource:
+  userdb:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    jdbc-url: @{datasource.userdb.url}
+    username: @{datasource.userdb.username}
+    password: @{datasource.userdb.password}
+    maximum-pool-size: @{datasource.userdb.maximumPoolSize}
+    connection-timeout: 3000
+    max-lifetime: 600000
   testdb:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver

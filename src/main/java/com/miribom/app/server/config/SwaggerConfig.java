@@ -1,8 +1,5 @@
 /*
  * @(#)SwaggerConfig.java 2020. 09. 30
- *
- * Copyright 2020 WorksMobile Corp. All rights Reserved.
- * Works Mobile PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
 package com.miribom.app.server.config;
 
@@ -31,7 +28,7 @@ public class SwaggerConfig {
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2)
 				.select()
-				.apis(RequestHandlerSelectors.basePackage("com.miribom.app.server.test.controller"))
+				.apis(RequestHandlerSelectors.basePackage("com.miribom.app.server.controller"))
 				.paths(PathSelectors.any())
 				.build()
 				.apiInfo(getApiInfo())
@@ -41,7 +38,7 @@ public class SwaggerConfig {
 
 
 	private ApiInfo getApiInfo() {
-		return new ApiInfoBuilder().title("Miribom Server API").description("swagger test").build();
+		return new ApiInfoBuilder().title("Miribom Server API").description("미리봄 서버 apis").build();
 	}
 
 	private Set<String> getProduces() {
