@@ -21,7 +21,10 @@ public enum ErrorCd {
 	UNSUPPORTED_MEDIA_TYPE(HttpStatus.UNSUPPORTED_MEDIA_TYPE, "unsupported media type"),
 	TOO_MANY_REQUESTS(HttpStatus.TOO_MANY_REQUESTS, "too many requests"),
 	INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "internal server error"),
-	SERVICE_UNAVAILABLE(HttpStatus.SERVICE_UNAVAILABLE, "service unavailable");
+	SERVICE_UNAVAILABLE(HttpStatus.SERVICE_UNAVAILABLE, "service unavailable"),
+
+	INVALID_PARAMETER(HttpStatus.BAD_REQUEST, "invalid parameter")
+	;
 
 	private HttpStatus httpStatus;
 	private String message;
