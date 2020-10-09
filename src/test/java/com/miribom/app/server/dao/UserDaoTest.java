@@ -52,4 +52,23 @@ public class UserDaoTest {
 				.insert(eq(NameSpace.USERDB.statement("user.insert")), userArgumentCaptor.capture());
 		assertEquals(userArgumentCaptor.getValue(), user);
 	}
+
+	@Test
+	public void selectByUserId() {
+		// given
+		String userId = "userId";
+		User user = new User();
+		user.setUserId(userId);
+
+		given(userdbSqlSessionTemplate.selectOne(NameSpace.USERDB.statement("user.selectByUserId"), userId))
+				.willReturn(user);
+
+		// when
+		User result = userDao.selectByUserId(userId);
+
+		// then
+		assertEquals(user, result);
+		then(userdbSqlSessionTemplate).should()
+			.selectOne(NameSpace.USERDB.statement("user.selectByUserId"), userId);
+	}
 }

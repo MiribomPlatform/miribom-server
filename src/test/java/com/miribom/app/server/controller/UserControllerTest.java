@@ -15,6 +15,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import com.miribom.app.server.bo.UserBo;
+import com.miribom.app.server.controller.model.UserCheckIdResponse;
 import com.miribom.app.server.controller.model.UserCreateRequest;
 import com.miribom.app.server.model.User;
 
@@ -53,6 +54,25 @@ public class UserControllerTest {
 		assertEquals(email, result.getEmail());
 		then(userBo).should()
 				.create(userId, userName, mobile, email);
+	}
+
+	@Test
+	public void checkId() {
+		// given
+		String userId = "userId";
+		User user = new User();
+
+		given(userBo.getUser(userId))
+			.willReturn(user);
+
+		// when
+		UserCheckIdResponse result = userController.checkId(userId);
+
+		// then
+		assertEquals(userId, result.getUserId());
+		assertTrue(result.isExist());
+		then(userBo).should()
+			.getUser(userId);
 	}
 
 }

@@ -35,7 +35,6 @@ public class UserBo {
 	 * @return 생성된 사용자에 대한 User 오브젝트
 	 */
 	public User create(String userId, String userName, String mobile, String email) {
-		// TODO: userId 중복 체크
 		if (checkUserIdDuplicated(userId)) {
 			throw ErrorCd.CONFLICT.serviceException("userId already exists. userId: {}", userId);
 		}
@@ -54,7 +53,15 @@ public class UserBo {
 	 * @return 이미 존재하는 ID일 경우 true, 존재하지 않으면 false
 	 */
 	private boolean checkUserIdDuplicated(String userId) {
+		return getUser(userId) != null;
+	}
 
-		return false;
+	/**
+	 * 사용자 ID를 통해 User 정보 가져오기
+	 * @param userId 사용자 ID
+	 * @return User 오브젝트
+	 */
+	public User getUser(String userId) {
+		return userDao.selectByUserId(userId);
 	}
 }

@@ -28,4 +28,13 @@ public class UserDao {
 	public void insert(User user) {
 		userdbSqlSessionTemplate.insert(NameSpace.USERDB.statement("user.insert"), user);
 	}
+
+	/**
+	 * 사용자 Id에 대한 User정보 조회
+	 * @param userId 사용자 Id
+	 * @return
+	 */
+	public User selectByUserId(String userId) {
+		return userdbSqlSessionTemplate.selectOne(NameSpace.USERDB.statement("user.selectByUserId"), userId);
+	}
 }
