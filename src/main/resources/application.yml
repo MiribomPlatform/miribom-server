@@ -5,6 +5,23 @@ server:
     connection-timeout: 10s
     accept-count: 100
 
+# spring
+spring:
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+      - org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration
+  resources:
+    add-mappings: false
+  task:
+    execution:
+      pool:
+        core-size: 50
+        max-threads: 50
+        queue-capacity: 10
+        keep-alive: 10s
+
 # datasource
 datasource:
   userdb:

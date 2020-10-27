@@ -62,8 +62,8 @@ public class UserControllerTest {
 		String userId = "userId";
 		User user = new User();
 
-		given(userBo.getUser(userId))
-			.willReturn(user);
+		given(userBo.getUserByUserId(userId))
+				.willReturn(user);
 
 		// when
 		UserCheckIdResponse result = userController.checkId(userId);
@@ -72,7 +72,24 @@ public class UserControllerTest {
 		assertEquals(userId, result.getUserId());
 		assertTrue(result.isExist());
 		then(userBo).should()
-			.getUser(userId);
+				.getUserByUserId(userId);
+	}
+
+	@Test
+	public void get() {
+		// given
+		int userNo = 123;
+		User user = new User();
+		given(userBo.getUser(userNo))
+				.willReturn(user);
+
+		// when
+		User result = userController.get(userNo);
+
+		// then
+		assertEquals(user, result);
+		then(userBo).should()
+				.getUser(userNo);
 	}
 
 }

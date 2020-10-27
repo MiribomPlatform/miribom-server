@@ -37,7 +37,7 @@ public class UserBoTest {
 		String email = "example@email.com";
 
 		given(userDao.selectByUserId(userId))
-			.willReturn(new User());
+				.willReturn(new User());
 
 		// when
 		String errorCd = null;
@@ -51,9 +51,9 @@ public class UserBoTest {
 		assertEquals(ErrorCd.CONFLICT.name(), errorCd);
 
 		then(userDao).should()
-			.selectByUserId(userId);
+				.selectByUserId(userId);
 		then(userDao).should(never())
-			.insert(any(User.class));
+				.insert(any(User.class));
 	}
 
 	@Test
@@ -83,7 +83,7 @@ public class UserBoTest {
 	}
 
 	@Test
-	public void getUser_by_userId() {
+	public void getUserByUserId() {
 		// given
 		String userId = "userId";
 		User user = new User();
@@ -91,12 +91,48 @@ public class UserBoTest {
 				.willReturn(user);
 
 		// when
-		User result = userBo.getUser(userId);
+		User result = userBo.getUserByUserId(userId);
 
 		// then
 		assertEquals(user, result);
 
 		then(userDao).should()
 				.selectByUserId(userId);
+	}
+
+	@Test
+	public void getUser_exception_notFound() {
+		// given
+		int userNo = 123;
+		given(userDao.select(userNo))
+				.willReturn(null);
+
+		// when
+		String errorCd = "";
+		try {
+			userBo.getUser(userNo);
+		} catch (ServiceException e) {
+			errorCd = e.getErrCode();
+		}
+
+		// then
+		assertEquals(ErrorCd.NOT_FOUND.name(), errorCd);
+	}
+
+	@Test
+	public void getUser() {
+		// given
+		int userNo = 123;
+		User user = new User();
+		given(userDao.select(userNo))
+				.willReturn(user);
+
+		// when
+		User result = userBo.getUser(userNo);
+
+		// then
+		assertEquals(user, result);
+		then(userDao).should()
+				.select(userNo);
 	}
 }

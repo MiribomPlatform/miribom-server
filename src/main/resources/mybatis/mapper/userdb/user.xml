@@ -22,6 +22,23 @@
 		)
 	</insert>
 
+	<select id="select" parameterType="int" resultType="user">
+		SELECT
+			user_no AS userNo,
+			user_id AS userId,
+			user_name AS userName,
+			mobile AS mobile,
+			email AS email,
+			avatar AS avatar,
+			reg_ymdt AS regYmdt,
+			update_ymdt AS updateYmdt,
+			delete_reserved_ymdt AS deleteReservedYmdt
+		FROM
+			user
+		WHERE
+			user_no = #{userNo}
+	</select>
+
 	<select id="selectByUserId" parameterType="string" resultType="user">
 		SELECT
 			user_no AS userNo,

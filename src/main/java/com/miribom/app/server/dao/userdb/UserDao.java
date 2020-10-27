@@ -37,4 +37,13 @@ public class UserDao {
 	public User selectByUserId(String userId) {
 		return userdbSqlSessionTemplate.selectOne(NameSpace.USERDB.statement("user.selectByUserId"), userId);
 	}
+
+	/**
+	 * 사용자 No를 통한 User정보 조회
+	 * @param userNo 사용자 No
+	 * @return
+	 */
+	public User select(int userNo) {
+		return userdbSqlSessionTemplate.selectOne(NameSpace.USERDB.statement("user.select"), userNo);
+	}
 }

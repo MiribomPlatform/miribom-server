@@ -71,4 +71,20 @@ public class UserDaoTest {
 		then(userdbSqlSessionTemplate).should()
 			.selectOne(NameSpace.USERDB.statement("user.selectByUserId"), userId);
 	}
+
+	@Test
+	public void select() {
+		// given
+		int userNo = 123;
+		User user = new User();
+		given(userdbSqlSessionTemplate.selectOne(NameSpace.USERDB.statement("user.select"), userNo))
+				.willReturn(user);
+
+		// when
+		User result = userDao.select(userNo);
+
+		// given
+		then(userdbSqlSessionTemplate).should()
+				.selectOne(NameSpace.USERDB.statement("user.select"), userNo);
+	}
 }

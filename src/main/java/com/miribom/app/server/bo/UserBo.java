@@ -5,6 +5,7 @@ package com.miribom.app.server.bo;
 
 import java.time.LocalDateTime;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +54,7 @@ public class UserBo {
 	 * @return 이미 존재하는 ID일 경우 true, 존재하지 않으면 false
 	 */
 	private boolean checkUserIdDuplicated(String userId) {
-		return getUser(userId) != null;
+		return getUserByUserId(userId) != null;
 	}
 
 	/**
@@ -61,7 +62,24 @@ public class UserBo {
 	 * @param userId 사용자 ID
 	 * @return User 오브젝트
 	 */
-	public User getUser(String userId) {
+	public User getUserByUserId(String userId) {
 		return userDao.selectByUserId(userId);
+	}
+
+
+	/**
+	 * 사용자 No를 통해 User 정보 가져오기
+	 * @param userNo 사용자 No
+	 * @return
+	 */
+	public User getUser(int userNo) {
+		// 사용자 조회
+		User user = userDao.select(userNo);
+
+		if (user == null) {
+			throw ErrorCd.NOT_FOUND.serviceException("not exist user - userNo:{}", userNo);
+		}
+
+		return user;
 	}
 }
