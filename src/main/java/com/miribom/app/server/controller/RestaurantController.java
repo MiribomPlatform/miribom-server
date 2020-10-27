@@ -34,11 +34,10 @@ public class RestaurantController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "userNo", value = "사용자 No", required = true)
     })
-
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
     public List<SimpleRestaurantInfo> listByUserNo(@RequestParam(value = "userNo") int userNo){
-        List restList = restaurantBo.getRestList(userNo);
+        List <SimpleRestaurantInfo> restList = restaurantBo.getRestList(userNo);
         return restList;
     }
 

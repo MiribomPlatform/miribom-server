@@ -27,11 +27,8 @@ public class RestaurantBo {
     @Autowired
     private RestaurantDao restaurantDao;
 
-    public List<SimpleRestaurantInfo> getRestList(int userNo){
+    public List<SimpleRestaurantInfo> getRestList(int userNo) {
 
         return restaurantDao.selectByUserId(userNo);
     }
-
-
-
 }

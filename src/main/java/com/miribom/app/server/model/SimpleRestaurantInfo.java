@@ -12,8 +12,7 @@ public class SimpleRestaurantInfo {
     private String restaurantName;
     private String address;
 
-    public int getRestaurantNo() {
-        return restaurantNo;
+    public SimpleRestaurantInfo() {
     }
 
     public SimpleRestaurantInfo(int restaurantNo, String restaurantName, String address) {
@@ -22,26 +21,27 @@ public class SimpleRestaurantInfo {
         this.address = address;
     }
 
-    public void setRestaurantNo(int restaurantNo) {
-        this.restaurantNo = restaurantNo;
+    public int getRestaurantNo() {
+        return restaurantNo;
     }
 
     public String getRestaurantName() {
         return restaurantName;
     }
 
-    public void setRestaurantName(String restaurantName) {
-        this.restaurantName = restaurantName;
-    }
-
     public String getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setRestaurantNo(int restaurantNo) {
+        this.restaurantNo = restaurantNo;
     }
 
-    public SimpleRestaurantInfo() {
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

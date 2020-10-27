@@ -3,13 +3,13 @@ package com.miribom.app.server.model;
 import java.time.LocalDateTime;
 
 public class Restaurant {
-    int restaurantNo;
-    String restaurantName;
-    String address;
-    String mobile;
-    Integer foodType;
-    String image;
-    String welcomeMessage;
+    private int restaurantNo;
+    private String restaurantName;
+    private String address;
+    private String mobile;
+    private Integer foodType;
+    private String image;
+    private String welcomeMessage;
     private LocalDateTime regYmdt;
     private LocalDateTime updateYmdt;
     private LocalDateTime deleteReservedYmdt;
