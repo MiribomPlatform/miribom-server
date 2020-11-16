@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.mapper.userdb.restaurant">
+
+    <select id="selectByUserId" parameterType="int" resultType="restaurant">
+	SELECT
+		a.restaurant_no AS restaurantNo,
+		b.restaurant_name AS restaurantName,
+		b.address AS address
+
+	FROM
+		user_restaurant_info AS a JOIN restaurant AS b
+	ON
+		a.restaurant_no = b.restaurant_no
+	WHERE
+		a.user_no = #{userNo};
+	</select>
+
+</mapper>

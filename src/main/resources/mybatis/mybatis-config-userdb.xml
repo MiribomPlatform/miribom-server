@@ -18,4 +18,14 @@
         <setting name="defaultStatementTimeout" value="20"/>
     </settings>
 
+    <typeAliases>
+        <typeAlias alias="map" type="java.util.Map" />
+        <typeAlias alias="long" type="java.lang.Long"/>
+        <typeAlias alias="int" type="java.lang.Integer" />
+        <typeAlias alias="string" type="java.lang.String" />
+        <typeAlias alias="date" type="java.util.Date" />
+        <typeAlias alias="list" type="java.util.List" />
+    </typeAliases>
+
+
 </configuration>

@@ -66,8 +66,8 @@ public class UserBoTest {
 
 		given(userDao.selectByUserId(userId))
 				.willReturn(null);
-
 		// when
+
 		User user = userBo.create(userId, userName, mobile, email);
 
 		// then
