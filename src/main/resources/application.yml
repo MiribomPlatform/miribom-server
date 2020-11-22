@@ -33,12 +33,3 @@ datasource:
     maximum-pool-size: @{datasource.userdb.maximumPoolSize}
     connection-timeout: 3000
     max-lifetime: 600000
-  testdb:
-    type: com.zaxxer.hikari.HikariDataSource
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    jdbc-url: @{datasource.testdb.url}
-    username: @{datasource.testdb.username}
-    password: @{datasource.testdb.password}
-    maximum-pool-size: @{datasource.testdb.maximumPoolSize}
-    connection-timeout: 3000
-    max-lifetime: 600000
