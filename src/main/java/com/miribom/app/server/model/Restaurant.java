@@ -2,12 +2,17 @@ package com.miribom.app.server.model;
 
 import java.time.LocalDateTime;
 
+import com.miribom.app.server.model.type.RestaurantType;
+
+/**
+ * @author changwoo.son
+ */
 public class Restaurant {
     private int restaurantNo;
     private String restaurantName;
     private String address;
     private String mobile;
-    private Integer foodType;
+    private RestaurantType restaurantType;
     private String image;
     private String welcomeMessage;
     private LocalDateTime regYmdt;
@@ -17,24 +22,23 @@ public class Restaurant {
     public Restaurant(){
     }
 
-    public Restaurant(int restaurantNo, String restaurantName, String address, String mobile, Integer foodType, String image, String welcomeMessage, LocalDateTime regYmdt, LocalDateTime updateYmdt) {
-        this.restaurantNo = restaurantNo;
+    public Restaurant(String restaurantName, String address, String mobile, RestaurantType restaurantType, String image, String welcomeMessage) {
         this.restaurantName = restaurantName;
         this.address = address;
         this.mobile = mobile;
-        this.foodType = foodType;
+        this.restaurantType = restaurantType;
         this.image = image;
         this.welcomeMessage = welcomeMessage;
-        this.regYmdt = regYmdt;
-        this.updateYmdt = updateYmdt;
+        this.regYmdt = LocalDateTime.now();
+        this.updateYmdt = LocalDateTime.now();
     }
 
-    public Restaurant(int restaurantNo, String restaurantName, String address, String mobile, Integer foodType, String image, String welcomeMessage, LocalDateTime regYmdt, LocalDateTime updateYmdt, LocalDateTime deleteReservedYmdt) {
+    public Restaurant(int restaurantNo, String restaurantName, String address, String mobile, RestaurantType restaurantType, String image, String welcomeMessage, LocalDateTime regYmdt, LocalDateTime updateYmdt, LocalDateTime deleteReservedYmdt) {
         this.restaurantNo = restaurantNo;
         this.restaurantName = restaurantName;
         this.address = address;
         this.mobile = mobile;
-        this.foodType = foodType;
+        this.restaurantType = restaurantType;
         this.image = image;
         this.welcomeMessage = welcomeMessage;
         this.regYmdt = regYmdt;
@@ -74,12 +78,12 @@ public class Restaurant {
         this.mobile = mobile;
     }
 
-    public Integer getFoodType() {
-        return foodType;
+    public RestaurantType getRestaurantType() {
+        return restaurantType;
     }
 
-    public void setFoodType(Integer foodType) {
-        this.foodType = foodType;
+    public void setRestaurantType(RestaurantType restaurantType) {
+        this.restaurantType = restaurantType;
     }
 
     public String getImage() {

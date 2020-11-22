@@ -3,9 +3,6 @@
  */
 package com.miribom.app.server.bo;
 
-import java.time.LocalDateTime;
-
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +18,7 @@ import com.miribom.app.server.model.User;
  */
 @Service
 public class UserBo {
-
-	private final static Logger logger = LoggerFactory.getLogger(UserBo.class);
+	private static final Logger logger = LoggerFactory.getLogger(UserBo.class);
 
 	@Autowired
 	private UserDao userDao;
@@ -40,10 +36,11 @@ public class UserBo {
 			throw ErrorCd.CONFLICT.serviceException("userId already exists. userId: {}", userId);
 		}
 
-		User user = new User(userId, userName, mobile, email, LocalDateTime.now(), LocalDateTime.now());
+		User user = new User(userId, userName, mobile, email);
+
 		// 사용자 추가
 		userDao.insert(user);
-		logger.info("user:create - user:{}", user);
+		logger.debug("user created - user:{}", user);
 
 		return user;
 	}

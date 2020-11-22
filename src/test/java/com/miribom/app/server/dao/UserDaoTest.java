@@ -6,8 +6,6 @@ package com.miribom.app.server.dao;
 import static org.junit.Assert.*;
 import static org.mockito.BDDMockito.*;
 
-import java.time.LocalDateTime;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
@@ -42,7 +40,7 @@ public class UserDaoTest {
 		String mobile = "01012345678";
 		String email = "example@email.com";
 
-		User user = new User(userId, userName, mobile, email, LocalDateTime.now(), LocalDateTime.now());
+		User user = new User(userId, userName, mobile, email);
 
 		// when
 		userDao.insert(user);

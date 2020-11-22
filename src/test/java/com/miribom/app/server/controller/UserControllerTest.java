@@ -6,8 +6,6 @@ package com.miribom.app.server.controller;
 import static org.junit.Assert.*;
 import static org.mockito.BDDMockito.*;
 
-import java.time.LocalDateTime;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -38,11 +36,10 @@ public class UserControllerTest {
 		String mobile = "01012345678";
 		String email = "example@email.com";
 		UserCreateRequest userCreateRequest = new UserCreateRequest(userId, userName, mobile, email);
-		User user = new User(userId, userName, mobile, email, LocalDateTime.now(), LocalDateTime.now());
+		User user = new User(userId, userName, mobile, email);
 
 		given(userBo.create(userId, userName, mobile, email))
 				.willReturn(user);
-
 
 		// when
 		User result = userController.create(userCreateRequest);

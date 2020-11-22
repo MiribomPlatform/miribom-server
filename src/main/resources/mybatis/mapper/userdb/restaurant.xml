@@ -2,12 +2,33 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis.mapper.userdb.restaurant">
 
-    <select id="selectByUserId" parameterType="int" resultType="restaurant">
+	<insert id="insert" useGeneratedKeys="true" keyProperty="restaurantNo" parameterType="restaurant">
+		INSERT INTO restaurant (
+			restaurant_name,
+			address,
+			mobile,
+			restaurant_type,
+			image,
+			welcome_message,
+			reg_ymdt,
+			update_ymdt
+		) VALUES (
+			#{restaurantName},
+			#{address},
+			#{mobile},
+			#{restaurantType},
+			#{image},
+			#{welcomeMessage},
+			#{regYmdt},
+			#{updateYmdt}
+		)
+	</insert>
+
+    <select id="selectByUserNo" parameterType="int" resultType="simpleRestaurantInfo">
 	SELECT
 		a.restaurant_no AS restaurantNo,
 		b.restaurant_name AS restaurantName,
 		b.address AS address
-
 	FROM
 		user_restaurant_info AS a JOIN restaurant AS b
 	ON
@@ -15,5 +36,20 @@
 	WHERE
 		a.user_no = #{userNo};
 	</select>
+
+	<select id="selectByOwnerNo" parameterType="int" resultType="simpleRestaurantInfo">
+	SELECT
+		a.restaurant_no AS restaurantNo,
+		b.restaurant_name AS restaurantName,
+		b.address AS address
+	FROM
+		user_restaurant_info AS a JOIN restaurant AS b
+	ON
+		a.restaurant_no = b.restaurant_no
+	WHERE
+		a.user_no = #{ownerNo}
+		AND a.owner_no = #{ownerNo};
+	</select>
+
 
 </mapper>

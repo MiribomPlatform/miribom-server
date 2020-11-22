@@ -22,18 +22,16 @@ public class User {
 	public User() {
 	}
 
-	public User(String userId, String userName, String mobile, String email, LocalDateTime regYmdt,
-		LocalDateTime updateYmdt) {
+	public User(String userId, String userName, String mobile, String email) {
 		this.userId = userId;
 		this.userName = userName;
 		this.mobile = mobile;
 		this.email = email;
-		this.regYmdt = regYmdt;
-		this.updateYmdt = updateYmdt;
+		this.regYmdt = LocalDateTime.now();
+		this.updateYmdt = LocalDateTime.now();
 	}
 
-	public User(int userNo, String userId, String userName, String mobile, String email, String avatar,
-		LocalDateTime regYmdt, LocalDateTime updateYmdt, LocalDateTime deleteReservedYmdt) {
+	public User(int userNo, String userId, String userName, String mobile, String email, String avatar, LocalDateTime regYmdt, LocalDateTime updateYmdt, LocalDateTime deleteReservedYmdt) {
 		this.userNo = userNo;
 		this.userId = userId;
 		this.userName = userName;

@@ -11,6 +11,7 @@ import com.miribom.app.common.util.StringUtil;
  * @author changwoo.son
  */
 public enum ErrorCd {
+	// Standard Http Status
 	BAD_REQUEST(HttpStatus.BAD_REQUEST, "bad request"),
 	UNAUTHORIZED(HttpStatus.UNAUTHORIZED, "unauthorized"),
 	FORBIDDEN(HttpStatus.FORBIDDEN, "forbidden"),
@@ -23,7 +24,9 @@ public enum ErrorCd {
 	INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "internal server error"),
 	SERVICE_UNAVAILABLE(HttpStatus.SERVICE_UNAVAILABLE, "service unavailable"),
 
-	INVALID_PARAMETER(HttpStatus.BAD_REQUEST, "invalid parameter")
+	INVALID_PARAMETER(HttpStatus.BAD_REQUEST, "invalid parameter"),
+	EXIST_RESTAURANT_NAME(HttpStatus.BAD_REQUEST, "exist restaurant name"), // 이미 존재하는 레스토랑 이름
+	MAX_RESTAURANT_COUNT(HttpStatus.BAD_REQUEST, "max restaurant count") // 최대 레스토랑 생성 개수 초과 시
 	;
 
 	private HttpStatus httpStatus;
